@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './styles/index.css';
 // pages
 import LogIn from './pages/LogIn.jsx';
-import Layout from './Layout';
+import Layout from './Layout.jsx';
 
 const App = ( ) => {
     return (  

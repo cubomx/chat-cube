@@ -1,9 +1,19 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+
+const htmlPlugin = new HtmlWebpackPlugin({
+    template: path.join(__dirname, "public/index.html"),
+    filename: './index.html' 
+});
+
 module.exports = {
-    entry: './src/client/index.js',
+    mode: 'development',
+    entry: path.join(__dirname, "src/client/index.jsx"),
     output: {
-        path: __dirname + '/src/public',
+        path: path.join(__dirname, 'dist'),
         filename: 'bundle.js'
     },
+    plugins: [htmlPlugin],
     module: {
         rules: [
             {
@@ -14,6 +24,10 @@ module.exports = {
             {
                 use: ["style-loader", "css-loader"],
                 test: /\.css$/i,
+            },
+            {
+                use: 'html-loader',
+                test: /\.html$/
             }
             
         ]
@@ -21,4 +35,13 @@ module.exports = {
     resolve: {
         extensions: ['*', '.js', '.jsx'],
       },
+
+    devServer: {
+        contentBase: path.join(__dirname, "dist"),
+        compress: true,
+        port: 3006,
+        historyApiFallback: true,
+        contentBase: './',
+        hot: true,
+    }
 }
