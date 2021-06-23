@@ -8,11 +8,16 @@ const htmlPlugin = new HtmlWebpackPlugin({
 
 module.exports = {
     mode: 'development',
-    entry: path.join(__dirname, "src/client/index.jsx"),
+    entry: {
+        index: path.join(__dirname, "src/client/index.jsx"),
+         
+    },
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: '[name].bundle.js'
     },
+
+    
     plugins: [htmlPlugin],
     module: {
         rules: [

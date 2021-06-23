@@ -1,6 +1,20 @@
+
 .App {
     display: flex;
     justify-content: center;
     color: blue;
     align-items: center;
+}
+
+html, body {
+    font-family: 'Cascadia Code', sans-serif;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+
+div#app {
+    height: 100%;
 }

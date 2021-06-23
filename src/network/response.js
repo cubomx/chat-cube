@@ -8,9 +8,9 @@ const  success = ( req, res, msg, status ) => {
     res.status(status || 200 ).json( response );
 }
 
-const error = ( req, res, msg, status) => {
+const error = ( req, res, error, msg, status) => {
     let response = {
-        error: msg,
+        error: error,
         message: msg,
         body: req.body,
         method: req.method

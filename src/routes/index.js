@@ -1,20 +1,13 @@
-const express = require ('express');
-const { success, error } = require('../network/response.js');
+const express = require("express");
+// routes
+const message = require("./message");
+const user = require("./user");
 
-const router = express.Router( );
-router.get('/message', (  (req, res ) => {
-    console.log( req.headers );
-    res.header( {
-        "custom-header": "Nuestro valor personalizado"
-    });
-    //res.send('Mensaje añadido');
-    success( req, res, "Message list" , 200);
-}));
+const initial = '/api';
 
-router.post('/hi', (  (req, res ) => {
-    success(req, res, 'Hola desde post', 200 )
-}));
+const routes = (server) => {
+    server.use(initial + '/message', message);
+    server.use(initial + '/user', user);
+}
 
-
-
-module.exports = router;
+module.exports = routes;

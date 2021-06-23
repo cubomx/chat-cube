@@ -1,3 +1,7 @@
+const dotenv = require('dotenv');
+dotenv.config();
+const db = require('./db');
+
 const express = require ('express');
 var app = express( );
 const router = require('./routes');
@@ -6,7 +10,6 @@ const path = require('path');
 
 // variables
 const port = 3000;
-
 
 // Settings
 app.set('port', process.env.PORT || port );
@@ -17,7 +20,7 @@ app.use(morgan('dev'));
 app.use(express.json( ));
 app.use(express.urlencoded({extended : false}));
 
-app.use('/api',  router );
+router(app);
 
 // static files
 app.use(express.static(path.join(__dirname, 'public')));
